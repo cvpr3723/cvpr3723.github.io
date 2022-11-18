@@ -1,0 +1,23 @@
+/* GLOBAL STYLES
+-------------------------------------------------- */
+/* Padding below the footer and lighter body text */
+
+body {
+  /* padding-top: 3rem; */
+  color: #5a5a5a;
+}
+
+/* Featurettes
+------------------------- */
+
+.featurette-divider {
+  margin: 2rem 0;
+  /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+.featurette-heading {
+  font-weight: 200;
+  line-height: 1.5;
+  letter-spacing: -.05rem;
+}

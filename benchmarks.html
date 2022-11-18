@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="main.css" rel="stylesheet">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel-caption {
+      background: rgba(0.0, 0.0, 0.0, 0.2);
+    }
+  </style>
+</head>
+
+
+<body>
+  <main>
+    <header
+      class="d-flex flex-wrap justify-content-center py-3 border-bottom shadow-bottom-md sticky-top bg-white p-3 shadow-sm">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <!-- <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" /></svg> -->
+        <span class="fs-4">Plant and Leaf Semantic Dataset</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Overview</a></li>
+        <li class="nav-item"><a href="dataset.html" class="nav-link">Dataset</a></li>
+        <li class="nav-item"><a href="benchmarks.html" class="nav-link active">Benchmarks</a></li>
+        <li class="nav-item"><a href="code.html" class="nav-link">Code</a></li>
+      </ul>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="featurette-heading" id="task-overview">Overview</h2>
+          <p lang="en">We furthermore provide with the dataset also a benchmark suite covering different aspects
+            of semantic interpretation in the agricultural domain at different levels of granularity. To ensure unbiased
+            evaluation of these tasks, we follow the common best practice to use a server-side evaluation of
+            the test set results, which enables us to keep the test set labels private. We plan to host these tasks on
+            <a href="https://codalab.lisn.upsaclay.fr">Codalab Competitions</a>. We expect predictions in the same png
+            format as the training set.</p>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <h2 class="featurette-heading" id="task-overview">Semantic Segmentation</h2>
+        <div class="col-md-4">
+          <img src="imgs/benchmarks/semantic_segmentation.png" class="img-fluid rounded d-block mx-auto">
+        </div>
+        <div class="col-md-8">
+
+          <p lang="en">Please see our competition website (coming soon) for more information on the benchmark and
+            submission process.
+          </p>
+          <p lang="en"><b>Task. </b>In this benchmark, an approach needs to provide for a given image a semantic
+            segmentation of crops, weeds and soil, i.e., a pixel-wise classification.</p>
+          <p lang="en"><b>Metric. </b>We use the commonly employed mean intersection-over-union (IoU) and also provide
+            class-specific IoUs for comparison of approaches.</p>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <h2 class="featurette-heading" id="task-overview">Panoptic Segmentation</h2>
+        <div class="col-md-4 align-middle">
+          <img src="imgs/benchmarks/panoptic_segmentation.png" class="img-fluid rounded d-block mx-auto align-middle">
+        </div>
+        <div class="col-md-8">
+          <p lang="en">Please see our competition website (coming soon) for more information on the benchmark and
+            submission process.
+            <p lang="en"><b>Task. </b>In this benchmark, an approach needs to provide semantics of crop, weed, and soil,
+              but also instance masks for crops and weeds.</p>
+            <p lang="en"><b>Metric. </b>We use panoptic quality (PQ) proposed by <a
+                href="https://arxiv.org/pdf/1801.00868.pdf">Kirillov et al.</a> as main metric, but also provide
+              class-wise panoptic
+              qualities, but also the auxiliary metrics for recognition quality (RQ) and segmentation quality (SQ) to
+              allow a more fine-grained comparison of approaches. For stuff classes, i.e., soil, we use
+              intersection-over-union as proposed by <a href="https://arxiv.org/pdf/1905.01220.pdf">Porzi et al.</a></p>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <h2 class="featurette-heading" id="task-overview">Leaf Instance Segmentation</h2>
+        <div class="col-md-4 align-middle">
+          <img src="imgs/benchmarks/leaf_instance_segmentation.png"
+            class="img-fluid rounded d-block mx-auto align-middle">
+        </div>
+        <div class="col-md-8">
+          <p lang="en">Please see our competition website (coming soon) for more information on the benchmark and
+            submission process.
+            <p lang="en"><b>Task. </b>In this benchmark, an approach needs to provide instance masks for crop leaves.
+            </p>
+            <p lang="en"><b>Metric. </b>We use panoptic quality (PQ) proposed by <a
+                href="https://arxiv.org/pdf/1801.00868.pdf">Kirillov et al.</a> as main metric, but also provide
+              class-wise panoptic
+              qualities, but also the auxiliary metrics for recognition quality (RQ) and segmentation quality (SQ) to
+              allow a more fine-grained comparison of approaches.</a></p>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <h2 class="featurette-heading" id="task-overview">Hierarchical Panoptic Segmentation</h2>
+        <div class="col-md-4 align-middle">
+          <img src="imgs/benchmarks/panoptic_segmentation.png" class="img-fluid rounded d-block mx-auto align-middle">
+        </div>
+        <div class="col-md-8">
+          <p lang="en">Please see our competition website (coming soon) for more information on the benchmark and
+            submission process.
+            <p lang="en"><b>Task. </b>In this benchmark, an approach needs to provide panoptic segmentation of plants
+              and leaves at the same time. Thus, it is possible to associate leaves to plants, which provides a holistic
+              semantic interpretation of the plant images.</p>
+            <p lang="en"><b>Metric. </b>We use panoptic quality (PQ) of crops and crop leaves proposed by <a
+                href="https://arxiv.org/pdf/1801.00868.pdf">Kirillov et al.</a> as main metric, but also provide
+              class-wise panoptic qualities. </a></p>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="row">
+        <h2 class="featurette-heading" id="task-overview">Plant and Leaf detection</h2>
+        <div class="col-md-4 align-middle">
+          <img src="imgs/benchmarks/plant_detection.png" class="img-fluid rounded d-block mx-auto align-middle">
+        </div>
+        <div class="col-md-8">
+          <p lang="en">Please see our competition website (coming soon) for more information on the benchmark and
+            submission process.
+            <p lang="en"><b>Task. </b>In this benchmark, an approach needs to provide bounding boxes for crops and weeds
+              or crop leaves.</p>
+            <p lang="en"><b>Metric. </b>We use the commonly employed average precision (AP) evaluated with a range of
+              IoU values as proposed by <a href="https://arxiv.org/pdf/1405.0312.pdf">Lin et al.</a> for the COCO
+              benchmark. We furthermore provide AP values for an IoU
+              threshold of 0.5 and 0.75.</a></p>
+        </div>
+      </div>
+      <div class="row text-center mt-5">
+        <div class="col-12">
+          (Note that this is preliminary and anonymized version of our dataset webpage.)
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+  </script>
+
+</body>
+
+
+</html>

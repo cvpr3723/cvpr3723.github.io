@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="main.css" rel="stylesheet">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .carousel-caption {
+      background: rgba(0.0, 0.0, 0.0, 0.2);
+    }
+  </style>
+</head>
+
+
+<body>
+  <main>
+    <header
+      class="d-flex flex-wrap justify-content-center py-3 border-bottom shadow-bottom-md sticky-top bg-white p-3 shadow-sm">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <!-- <svg class="bi me-2" width="40" height="32">
+          <use xlink:href="#bootstrap" /></svg> -->
+        <span class="fs-4">Plant and Leaf Semantic Dataset</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="index.html" class="nav-link" aria-current="page">Overview</a></li>
+        <li class="nav-item"><a href="dataset.html" class="nav-link active">Dataset</a></li>
+        <li class="nav-item"><a href="benchmarks.html" class="nav-link">Benchmarks</a></li>
+        <li class="nav-item"><a href="code.html" class="nav-link">Code</a></li>
+      </ul>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="featurette-heading">Dataset Download</h2>
+          <p>Extract the provided zip files in a folder, which results in the folder structure shown under "Dataset
+            Format". Note that we provide here for the review only the visualizations of the data, 
+            but will later provide the data format described below after potential acceptance.</p>
+        </div>
+        <div class="col-md-4 text-center">
+          <h5>Training set (953 images)</h5>
+          <a href="https://drive.google.com/file/d/1AKZtQAdWIuvDR9Un_v-ANKbBzutRTD7Q/view?usp=share_link">Download annotations.</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <h5>Validation set (662 images)</h5>
+          <a href="https://drive.google.com/file/d/1Jpj-j0ZSk2879BZa9vh80MQn6xpcAfoT/view?usp=share_link">Download annotations.</a>
+        </div>
+        <div class="col-md-4 text-center">
+          <h5>Test set (650 images)</h5>
+        </div>
+        <div class="col-12 mt-3">
+            <p>After acceptance, we provide the files that can be loaded using the provided data loader in the <a href="https://github.com/cvpr3723/devkit">devkit</a>.
+            Here we provide a small sample of the train, validation and test set to show the structure and data format provided: <a href="https://drive.google.com/file/d/1fonvObygGPzMVOKSWkdVXILbfujhSncR/view?usp=share_link">Sample Dataset</a> as a single ZIP file.</p>
+        </div>
+      </div>
+      <hr class="featurette-divider">
+      <div class="col-md-12">
+        <h2 class="featurette-heading">Dataset Format</h2>
+      </div>
+      <div class="row">
+        <div class="col-4" style="display:flex; justify-content: center;">
+          <img width="250" src="imgs/folder_structure.svg">
+
+        </div>
+        <div class="col-8 align-middle">
+          <p>For each image of the training and validation set, we provide the following annotations in the corresponding
+          sub-folders:</p>
+          <ul>
+            <li><b>semantics</b>: Pixel-wise semantic masks, where label ids correspond to: background (0), crop (1),
+              weed(2),
+              partial-crop (3), partial-crop (4). Partial crops and weeds have less than 50% visible pixels.</li>
+            <li><b>plant_instances</b>: Pixel-wise instance masks for crops and weed, where ids > 0 correspond to
+              distinct
+              instances.</li>
+            <li><b>leaf_instances</b>: Pixel-wise instance masks for leaves, where ids > 0 correspond to distinct
+              instances.
+            </li>
+            <li><b>plant_visibility</b>: Pixel-wise visibility in range [0,255], where 255 means fully visible.</li>
+            <li><b>leaf_visibility</b>: Pixel-wise visibility in range [0,255], where 255 means fully visible.</li>
+          </ul>
+          <p>We store all annotations as 16-bit png files as these provide a decent lossless compression and can be
+            easily read with off-the-shelf pillow or OpenCV, minimizing the dependencies. All images and corresponding
+            annotations have an image size of of size 1024 by 1024 pixels. The size was chosen such that even in later
+            growth stages multiple plants are completely inside the image.</p>
+
+        </div>
+      </div>
+
+
+      <div class="row text-center mt-5">
+        <div class="col-12">
+          (Note that this is preliminary and anonymized version of our dataset webpage.)
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+  </script>
+
+</body>
+
+
+</html>
